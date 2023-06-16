@@ -1,0 +1,172 @@
+---
+- hosts: localhost
+  gather_facts: false
+  become: true
+  vars:
+    path_to_moodle: /srv/moodle
+  tasks:
+  - name: Lookup latest release of moodle-filter_poodll
+    community.general.github_release:
+      user: justinhunt
+      repo: moodle-filter_poodll
+      action: latest_release
+    register: moodle_filter_poodll_release
+  - debug: var=moodle_filter_poodll_release.tag
+        
+  - name: Install moodle-filter_poodll
+    git:
+      repo: https://github.com/justinhunt/moodle-filter_poodll.git
+      dest: "{{ path_to_moodle }}/filter/poodll"
+      version: "{{ moodle_filter_poodll_release.tag }}"
+
+
+  - name: Lookup latest release of moodle-mod_minilesson
+    community.general.github_release:
+      user: justinhunt
+      repo: moodle-mod_minilesson
+      action: latest_release
+    register: moodle_mod_minilesson_release
+  - debug: var=moodle_mod_minilesson_release.tag
+        
+  - name: Install moodle-mod_minilesson
+    git:
+      repo: https://github.com/justinhunt/moodle-mod_minilesson.git
+      dest: "{{ path_to_moodle }}/mod/minilesson"
+      version: "{{ moodle_mod_minilesson_release.tag }}"
+
+      
+
+  - name: Lookup latest release of moodle-mod_readaloud
+    community.general.github_release:
+      user: justinhunt
+      repo: moodle-mod_readaloud
+      action: latest_release
+    register: moodle_mod_readaloud_release
+  - debug: var=moodle_mod_readaloud_release.tag
+        
+  - name: Install moodle-mod_readaloud
+    git:
+      repo: https://github.com/justinhunt/moodle-mod_readaloud.git
+      dest: "{{ path_to_moodle }}/mod/readaloud"
+      version: "{{ moodle_mod_readaloud_release.tag }}"
+
+
+  - name: Lookup latest release of moodle-mod_solo
+    community.general.github_release:
+      user: justinhunt
+      repo: moodle-mod_solo
+      action: latest_release
+    register: moodle_mod_solo_release
+  - debug: var=moodle_mod_solo_release.tag
+        
+  - name: Install moodle-mod_solo
+    git:
+      repo: https://github.com/justinhunt/moodle-mod_solo.git
+      dest: "{{ path_to_moodle }}/mod/solo"
+      version: "{{ moodle_mod_solo_release.tag }}"
+
+
+  - name: Lookup latest release of moodle-mod_wordcards
+    community.general.github_release:
+      user: justinhunt
+      repo: moodle-mod_wordcards
+      action: latest_release
+    register: moodle_mod_wordcards_release
+  - debug: var=moodle_mod_wordcards_release.tag
+        
+  - name: Install moodle-mod_wordcards
+    git:
+      repo: https://github.com/justinhunt/moodle-mod_wordcards.git
+      dest: "{{ path_to_moodle }}/mod/wordcards"
+      version: "{{ moodle_mod_wordcards_release.tag }}"
+
+
+  - name: Lookup latest release of moodle-assign_submission_onlinepoodll
+    community.general.github_release:
+      user: justinhunt
+      repo: moodle-assign_submission_onlinepoodll
+      action: latest_release
+    register: moodle_assign_submission_onlinepoodll_release
+  - debug: var=moodle_assign_submission_onlinepoodll_release.tag
+        
+  - name: Install moodle-assign_submission_onlinepoodll
+    git:
+      repo: https://github.com/justinhunt/moodle-assign_submission_onlinepoodll.git
+      dest: "{{ path_to_moodle }}/mod/assign/submission/cloudpoodll"
+      version: "{{ moodle_assign_submission_onlinepoodll_release.tag }}"
+
+
+  - name: Lookup latest release of moodle-assignfeedback_cloudpoodll
+    community.general.github_release:
+      user: justinhunt
+      repo: moodle-assignfeedback_cloudpoodll
+      action: latest_release
+    register: moodle_assignfeedback_cloudpoodll_release
+  - debug: var=moodle_assignfeedback_cloudpoodll_release.tag
+        
+  - name: Install moodle-assignfeedback_cloudpoodll
+    git:
+      repo: https://github.com/justinhunt/moodle-assignfeedback_cloudpoodll.git
+      dest: "{{ path_to_moodle }}/mod/assign/feedback/cloudpoodll"
+      version: "{{ moodle_assignfeedback_cloudpoodll_release.tag }}"
+
+
+  - name: Lookup latest release of moodle-atto_poodll
+    community.general.github_release:
+      user: justinhunt
+      repo: moodle-atto_poodll
+      action: latest_release
+    register: moodle_atto_poodll_release
+  - debug: var=moodle_atto_poodll_release.tag
+        
+  - name: Install moodle-atto_poodll
+    git:
+      repo: https://github.com/justinhunt/moodle-atto_poodll.git
+      dest: "{{ path_to_moodle }}/lib/editor/atto/plugins/poodll"
+      version: "{{ moodle_atto_poodll_release.tag }}"
+
+
+  - name: Lookup latest release of moodle-atto_subtitle
+    community.general.github_release:
+      user: justinhunt
+      repo: moodle-atto_subtitle
+      action: latest_release
+    register: moodle_atto_subtitle_release
+  - debug: var=moodle_atto_subtitle_release.tag
+        
+  - name: Install moodle-atto_subtitle
+    git:
+      repo: https://github.com/justinhunt/moodle-atto_subtitle.git
+      dest: "{{ path_to_moodle }}/lib/editor/atto/plugins/subtitle"
+      version: "{{ moodle_atto_subtitle_release.tag }}"
+
+
+  - name: Lookup latest release of moodle-qtype_cloudpoodll
+    community.general.github_release:
+      user: justinhunt
+      repo: moodle-qtype_cloudpoodll
+      action: latest_release
+    register: moodle_qtype_cloudpoodll_release
+  - debug: var=moodle_qtype_cloudpoodll_release.tag
+        
+  - name: Install moodle-qtype_cloudpoodll
+    git:
+      repo: https://github.com/justinhunt/moodle-qtype_cloudpoodll.git
+      dest: "{{ path_to_moodle }}/question/type/cloudpoodll"
+      version: "{{ moodle_qtype_cloudpoodll_release.tag }}"
+
+
+  - name: Lookup latest release of moodle-tinymce_poodll
+    community.general.github_release:
+      user: justinhunt
+      repo: moodle-tinymce_poodll
+      action: latest_release
+    register: moodle_tinymce_poodll_release
+  - debug: var=moodle_tinymce_poodll_release.tag
+        
+  - name: Install moodle-tinymce_poodll
+    git:
+      repo: https://github.com/justinhunt/moodle-tinymce_poodll.git
+      dest: "{{ path_to_moodle }}/lib/editor/tinymce/plugins/poodll"
+      version: "{{ moodle_tinymce_poodll_release.tag }}"
+
