@@ -156,17 +156,16 @@
       version: "{{ moodle_qtype_cloudpoodll_release.tag }}"
 
 
-  - name: Lookup latest release of moodle-tinymce_poodll
+  - name: Lookup latest release of moodle-tiny_poodll
     community.general.github_release:
       user: justinhunt
-      repo: moodle-tinymce_poodll
+      repo: moodle-tiny_poodll
       action: latest_release
-    register: moodle_tinymce_poodll_release
-  - debug: var=moodle_tinymce_poodll_release.tag
-        
-  - name: Install moodle-tinymce_poodll
-    git:
-      repo: https://github.com/justinhunt/moodle-tinymce_poodll.git
-      dest: "{{ path_to_moodle }}/lib/editor/tinymce/plugins/poodll"
-      version: "{{ moodle_tinymce_poodll_release.tag }}"
+    register: moodle_tiny_poodll_release
+  - debug: var=moodle_tiny_poodll_release.tag
 
+  - name: Install moodle-tiny_poodll
+    git:
+      repo: https://github.com/justinhunt/moodle-tiny_poodll.git
+      dest: "{{ path_to_moodle }}/lib/editor/tiny/plugins/poodll"
+      version: "{{ moodle_tiny_poodll_release.tag }}"
